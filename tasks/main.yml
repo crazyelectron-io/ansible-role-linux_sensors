@@ -12,9 +12,12 @@
   ansible.builtin.get_url:
     url: http://ftp.nl.debian.org/debian/pool/main/h/hddtemp/hddtemp_0.3-beta15-54_amd64.deb
     dest: /tmp
+    owner: root
+    mode: '775'
 - name: Install hddtemp package
   ansible.builtin.apt:
     deb: /tmp/hddtemp_0.3-beta15-53_amd64.deb
+
 - name: Add Samsung SSDs to hddtemp database
   block:
     - name: Add Samsung 870 EVO SSD to hddtemp database
