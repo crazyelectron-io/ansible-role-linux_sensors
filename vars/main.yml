@@ -1,3 +1,7 @@
-# file: [ROLE]/vars/main.yaml
-# synopsis: template local variables definition file
+# file: linux-sensors/vars/main.yaml
+# synopsis: local variables definition file
 ---
+# Debian packages for reading hardware sensors
+sensor_packages:
+  - smartmontools
+  - lm-sensors

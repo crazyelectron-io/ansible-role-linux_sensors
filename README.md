@@ -1,11 +1,19 @@
-# Ansible role [ROLE_NAME]
+# Ansible role linux_sensors
 
-Ansible role to [...].
+Ansible role to install Linux sensor modules for monitoring hardware temperature and SSD (SMART) status.
 
 > Be aware that this role is opinionated and fits my preferences and way of working.
 > It may or may not be suitable for your needs.
 
 ## Role variables
+
+### sensor_packages
+
+Defines the list of packages needed to monitor the disk and motherboard temperature and status.
+
+### samsung_ssd_db
+
+Boolean to specify whether or not the Samsung EVO 870 and 890 Pro SSD information should be added to the database of `hdd_temp`.
 
 ### Mandatory variables
 
@@ -13,18 +21,27 @@ Ansible role to [...].
 
 ### Optional parameters (with defaults)
 
-[None.]
+```yaml
+# Linux packages for reading hardware sensors
+sensor_packages:
+  - smartmontools
+  - lm-sensors
+```
+
+```yaml
+samsung_ssd_db: false
+```
 
 ## Usage of this role
 
 To use this role directly, include the following section in a `requirements.yml` file in the local `roles` directory:
 
 ```yaml
-# Include the '[ROLE_NAME]` role from GitHub
-- src: git@github.com:crazyelectron-io/role-[ROLE_NAME].git
+# Include the 'linux_sensors` role from GitHub
+- src: git@github.com:crazyelectron-io/ansible-role-linux_sensors.git
   scm: git
   version: main
-  name: [ROLE_NAME]
+  name: linux_sensors
 ```
 
 > Only include the 'top' roles, dependencies - when listed in `meta/main.yaml` of the imported role - will be downloaded automatically.

@@ -1,0 +1,5 @@
+# Include the 'linux_sensors` role from GitHub
+- src: git@github.com:crazyelectron-io/ansible-role-linux_sensors.git
+  scm: git
+  version: main
+  name: linux-sensors

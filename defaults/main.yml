@@ -1,3 +1,4 @@
-# file: [ROLE]/defaults/main.yaml
-# synopsis: template default variables definition file
+# file: linux-sensors/defaults/main.yaml
+# synopsis: default variables definition file
 ---
+samsung_ssd_db: false
