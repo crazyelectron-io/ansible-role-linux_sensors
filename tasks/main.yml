@@ -8,29 +8,30 @@
   with_items: "{{ sensor_packages }}"
 
 # hddtemp package is not in Bookworm repo
-- name: Get Bookworm package for hddtemp
-  ansible.builtin.get_url:
-    url: http://ftp.nl.debian.org/debian/pool/main/h/hddtemp/hddtemp_0.3-beta15-54_amd64.deb
-    dest: /tmp
-    owner: root
-    mode: '775'
-- name: Install hddtemp package
-  ansible.builtin.apt:
-    deb: /tmp/hddtemp_0.3-beta15-53_amd64.deb
+# - name: Get Bookworm package for hddtemp
+#   ansible.builtin.get_url:
+#     url: http://ftp.nl.debian.org/debian/pool/main/h/hddtemp/hddtemp_0.3-beta15-54_amd64.deb
+#     dest: /tmp
+#     owner: root
+#     mode: '775'
+# - name: Install hddtemp package
+#   ansible.builtin.apt:
+#     deb: /tmp/hddtemp_0.3-beta15-53_amd64.deb
+#     update_cache: yes
 
-- name: Add Samsung SSDs to hddtemp database
-  block:
-    - name: Add Samsung 870 EVO SSD to hddtemp database
-      ansible.builtin.lineinfile:
-        path: /etc/hddtemp.db
-        regexp: '^870 QVO 8TB'
-        line: \"Samsung SSD 870 QVO 8TB\" 190 C \"Samsung SSD 870 QVO 8TB\"
-    - name: Add Samsung 890 Pro SSD tp hddtemp database
-      ansible.builtin.lineinfile:
-        path: /etc/hddtemp.db
-        regexp: '^890 PRO 1TB'
-        line: \"Samsung SSD 980 PRO 1TB\" 190 C \"Samsung SSD 980 PRO 1TB\"
-  when: samsung_ssd_db
+# - name: Add Samsung SSDs to hddtemp database
+#   block:
+#     - name: Add Samsung 870 EVO SSD to hddtemp database
+#       ansible.builtin.lineinfile:
+#         path: /etc/hddtemp.db
+#         regexp: '^870 QVO 8TB'
+#         line: \"Samsung SSD 870 QVO 8TB\" 190 C \"Samsung SSD 870 QVO 8TB\"
+#     - name: Add Samsung 890 Pro SSD tp hddtemp database
+#       ansible.builtin.lineinfile:
+#         path: /etc/hddtemp.db
+#         regexp: '^890 PRO 1TB'
+#         line: \"Samsung SSD 980 PRO 1TB\" 190 C \"Samsung SSD 980 PRO 1TB\"
+#   when: samsung_ssd_db
 
 - name: Load sensor modules
   block:
